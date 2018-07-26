@@ -5,26 +5,33 @@ I've used the DS1307 in the past and found the time would drift significantly, e
 
 Much of the information below comes from [this page](https://spellfoundry.com/sleepy-pi/setting-up-the-real-time-clock-on-raspbian-jessie/), this [discussion](https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=125003) and this [blog](https://trick77.com/adding-ds3231-real-time-clock-raspberry-pi-3/).
 
-## Setup
+## Real-Time Clock Setup
 
-Insert a 3v battery ([CR1220](https://www.adafruit.com/product/380)) and connect the DS3231 to the RPi via I2C bus.  Make sure you've installed and enable the appropriate I2C tools:
+Insert a 3v battery ([CR1220](https://www.adafruit.com/product/380)) and connect the DS3231 to the RPi via I2C bus.  
+
+### I2C Setup
+Make sure you've installed and enable the appropriate I2C tools:
 
 ```
-sudo apt-get install python-smbus i2c-tools
+sudo apt-get install i2c-tools
 ```
 
-You'll need to edit the ```/boot/config.txt``` file and add the following line at the bottom:
+and edit the ```/boot/config.txt``` file by uncommenting ```dtparam=i2c_arm=on``` and
+adding the following line at the bottom:
 
 ```
 dsoverlay=i2c-rtc,ds3231
 ```
 
-I've not used other RTCs but Im guessing you can substitute the ```ds3231``` for other available RTCs.  **Reboot** the Rpi and you should be able to see th device connected via I2C by running:
+I've not used other RTCs but Im guessing you can substitute the ```ds3231``` for other available RTCs.  **Reboot**.
+
+To confirm you're connected via I2C, run:
 
 ```
 $ i2cdetect -y 1
 ```
 
+### RTC Configuration
 Next you'll need to remove the fake hardware clock.  I dont understand this but run these commands:
 
 ```
@@ -46,7 +53,7 @@ Next we'll edit the file ```/lib/udev/hwclock-set```.  This file Comment out the
 # exit 0
 #fi
 ```
-and the lines with ```--systz```.
+and the lines with ```--systz```.  These lines will update the RTC from the system time, which is something we dont want:
 
 ```
 if [ yes - "$BADYEAR" ] ; then 
@@ -64,7 +71,7 @@ Finally, edit the file ```/etc/rc.local``` and add:
 /sbin/hwclock -s
 ```
 
-above the last line.  This will cause the hwclock to update the system time each time on reboot.
+above the last line ```exit 0```.  This will cause the hwclock to update the system time each time on reboot.
 
 ## Useful Commands
 
