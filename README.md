@@ -5,7 +5,7 @@ I've used the DS1307 in the past and found the time would drift significantly, e
 
 Much of the information below comes from [this page](https://spellfoundry.com/sleepy-pi/setting-up-the-real-time-clock-on-raspbian-jessie/), this [discussion](https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=125003) and this [blog](https://trick77.com/adding-ds3231-real-time-clock-raspberry-pi-3/).
 
-<img src="ds3231.jpg" align="right" width="334" height="446" >
+<img src="ds3231.jpg" align="right" width="334">
 
 ## Real-Time Clock Setup
 
