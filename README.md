@@ -5,6 +5,8 @@ I've used the DS1307 in the past and found the time would drift significantly, e
 
 Much of the information below comes from [this page](https://spellfoundry.com/sleepy-pi/setting-up-the-real-time-clock-on-raspbian-jessie/), this [discussion](https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=125003) and this [blog](https://trick77.com/adding-ds3231-real-time-clock-raspberry-pi-3/).
 
+![DS3231](ds3231.jpg)
+
 ## Real-Time Clock Setup
 
 Insert a 3v battery ([CR1220](https://www.adafruit.com/product/380)) and connect the DS3231 to the RPi via I2C bus.  
