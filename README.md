@@ -3,9 +3,9 @@ This repo contains a description of working with the DS3231 real time clock for 
 
 I've used the DS1307 in the past and found the time would drift significantly, especially in high heat situations.  Furthermore, the DS1307 would often reset if the battery was bumped or if the voltage waivered even slightly.  Therefore, I've tried the DS3231, which has performed much better. 
 
-Much of the information below comes from [this page](https://spellfoundry.com/sleepy-pi/setting-up-the-real-time-clock-on-raspbian-jessie/), this [discussion](https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=125003) and this [blog](https://trick77.com/adding-ds3231-real-time-clock-raspberry-pi-3/).
-
 <img src="ds3231.jpg" align="right" width="334">
+
+Much of the information below comes from [this page](https://spellfoundry.com/sleepy-pi/setting-up-the-real-time-clock-on-raspbian-jessie/), this [discussion](https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=125003) and this [blog](https://trick77.com/adding-ds3231-real-time-clock-raspberry-pi-3/).
 
 ## Real-Time Clock Setup
 
